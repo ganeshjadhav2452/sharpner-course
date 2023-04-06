@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number of set bits</title>
+</head>
+<body>
+    <script>
+        /*
+             1. Takes an unsigned integer as an argument.
+
+            2. Declares a variable `count` and initializes it to 0.
+
+            3. Begins a while loop that continues as long as the integer is greater than 0.
+
+            4. Inside the loop, performs a bitwise AND operation between the integer and 1.
+
+            5. If the result of the operation is 1, increments the `count` variable by 1.
+
+            6. Shifts the integer to the right by 1 place using a right shift operator.
+
+            7. The loop continues until the integer becomes 0.
+
+            8. Returns the `count` variable, which represents the number of '1' bits in the 
+            original integer.
+
+            var hammingWeight = function(n) {
+    
+                let count = 0;
+              while (n > 0) {
+                if (n & 1 === 1) {
+                  count++;
+                }
+                n = n >> 1;
+              }
+              return count;
+                
+            };
+
+            */
+                let n = 5;
+
+                let count = 0;
+
+                while(n){
+                    if(n & 1){
+                        count = count + 1;
+
+                    }
+                    n = n >> 1;
+                   
+                }
+                
+                console.log(count)                                                                                                                                                                                                                                                                                                                                          
+    </script>
+</body>
+</html>

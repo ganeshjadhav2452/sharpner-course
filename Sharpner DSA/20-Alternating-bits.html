@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alternating bits</title>
+</head>
+
+<body>
+    <script>
+        /*
+        This code checks if the binary representation of n has alternating bits, which means that every bit is different from its neighbors (0 followed by 1, or 1 followed by 0).
+
+        1. Initialize previousBit: previousBit is set to the least significant bit of n, which can be obtained by n & 1. The binary AND operation between n and 1 returns 1 if the least significant bit of n is 1, and 0 if it's 0.
+
+        2. Shift n right by 1 bit: The line n = n >> 1 shifts n to the right by 1 bit. This operation effectively divides n         by 2 and discards the least significant bit.
+
+        3. Enter the loop: The loop continues as long as n is greater than 0. This means that the loop will keep running         until n becomes 0.
+
+        4. Initialize currentBit: The line let currentBit = n & 1 sets currentBit to the least significant bit of the new         value of n.
+
+        5. Compare previousBit and currentBit: The line if (previousBit == currentBit) checks if the current and previous         bits are the same. If they are, the function returns false, because the bits are not alternating.
+
+        6. Update previousBit and shift n right by 1: The line previousBit = currentBit sets previousBit to the current bit,         and the line n = n >> 1 shifts n to the right by 1, discarding the least significant bit.
+
+        7. Repeat the loop: The code goes back to step 4 and repeats the loop until n becomes 0.
+
+        8. Return true: When the loop finishes, the function returns true, indicating that all bits in n are alternating.
+
+        */
+        let n = 2;
+        var hasAlternatingBits = function (n) {
+            let previousBit = n & 1;
+
+            n = n >> 1;
+
+            while (n > 0) {
+                let currentBit = n & 1;
+                if (previousBit == currentBit) {
+                    return false;
+                }
+                previousBit = currentBit;
+
+                n = n >> 1;
+
+            }
+            return true;
+        };
+
+        let ans = hasAlternatingBits(n)
+        console.log(ans)
+    </script>
+</body>
+
+</html>

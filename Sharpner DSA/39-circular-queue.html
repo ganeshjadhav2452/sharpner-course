@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var MyCircularQueue = function (k) {
+            this.myQueue = [];
+            this.front = -1;
+            this.rear = -1;
+            this.k = k;
+        };
+
+        MyCircularQueue.prototype.enQueue = function (value) {
+            if (this.isFull() == true) {
+                return false;
+            } else {
+
+                if (this.front == -1 && this.rear == -1) {
+                    this.front++;
+                    this.rear++
+                } else {
+                    this.rear++
+                }
+                this.myQueue[this.rear] = value;
+                return true;
+            }
+
+        };
+
+        MyCircularQueue.prototype.deQueue = function () {
+            if (this.isEmpty()) {
+                return false
+            }
+            if (this.front == this.rear) {
+                this.front = -1;
+                this.rear = -1;
+            } else {
+                this.front++
+            }
+            return true;
+        };
+
+        MyCircularQueue.prototype.Front = function () {
+            return this.myQueue[this.front];
+        };
+
+        MyCircularQueue.prototype.Rear = function () {
+            return this.myQueue[this.rear]
+        };
+
+
+        MyCircularQueue.prototype.isEmpty = function () {
+            if (this.front == -1 && this.rear == -1) {
+                return true;
+            } else {
+                return false;
+            }
+        };
+
+        MyCircularQueue.prototype.isFull = function () {
+            return (this.rear + 1) % this.k == this.front;
+        };
+
+        
+        var obj = new MyCircularQueue(k)
+        var param_1 = obj.enQueue(value)
+        var param_1 = obj.enQueue(value)
+        var param_1 = obj.enQueue(value)
+        var param_1 = obj.enQueue(value)
+        var param_2 = obj.deQueue()
+        var param_3 = obj.Front()
+        var param_4 = obj.Rear()
+        var param_5 = obj.isEmpty()
+        var param_6 = obj.isFull()
+
+    
+    </script>
+</body>
+
+</html>

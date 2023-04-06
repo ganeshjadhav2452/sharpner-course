@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+        Leetcode 946
+        Given two integer arrays pushed and popped each with distinct values, return true if this could have been the result of a sequence of push and pop operations on an initially empty stack, or false otherwise.
+ 
+        */
+
+        let pushed = [1,2,3,4,5], popped = [4,5,3,2,1]
+
+        function validateStackSequences(pushed, popped) {
+            const stack = []; // initialize an empty stack
+            let i = 0; // initialize pointer for the pushed array
+
+            for (const num of pushed) {
+                stack.push(num); // push the number onto the stack
+
+                // check if the top of the stack matches the current number in popped
+                while (stack.length && stack[stack.length - 1] === popped[i]) {
+                    stack.pop(); // pop from the stack
+                    i++; // increment the pointer for popped
+                }
+            }
+
+            // if the stack is empty, it means all numbers have been popped successfully
+            return stack.length === 0;
+        }
+        console.log(validateStackSequences(pushed,popped))
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        /*
+        Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val == val, and return the new head.
+
+ 
+
+        Example 1:
+
+
+        Input: head = [1,2,6,3,4,5,6], val = 6
+        Output: [1,2,3,4,5]
+        */
+
+        class ListNode {
+            constructor(val, next) {
+                this.val = val === undefined ? 0 : val;
+                this.next = next === undefined ? null : next;
+            }
+        }
+
+        const createLinkedList = (arr) => {
+            let head = new ListNode();
+            let current = head;
+            for (let i = 0; i < arr.length; i++) {
+                current.next = new ListNode(arr[i]);
+                current = current.next;
+            }
+            return head.next;
+        };
+
+        const head = createLinkedList([1, 2, 6, 3, 4, 5, 6]);
+        const val = 6;
+
+
+
+
+        var removeElements = function (head, val) {
+
+
+            let dummy = new ListNode(-1);
+            dummy.next = head;
+
+            let prev = dummy;
+            let current = head;
+
+            while (current !== null) {
+
+                if (current.val == val) {
+                    prev.next = current.next;
+                } else {
+                    prev = current;
+                }
+                current = current.next;
+
+            }
+            return dummy.next;
+        };
+
+        console.log(removeElements(head, val))
+
+    </script>
+</body>
+
+</html>

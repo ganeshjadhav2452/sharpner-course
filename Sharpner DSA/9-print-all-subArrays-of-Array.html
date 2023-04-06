@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>print all subArrays of a Array</title>
+</head>
+<body>
+    <script>
+        let myArray = [0,1,2,3,4,5];
+        
+        for(let i = 0; i< myArray.length; i++){ // this loop will work as starting point of subarray
+        
+        for(let j = i; j<myArray.length; j++){ //  this loop will work as end point of subArray
+            
+            let str = ''
+            for(let k = i; k<=j;k++){ // this loop will print values by concatinating value with blank string
+                str = str + myArray[k]
+            }
+            console.log(str)
+        }
+    }
+    </script>
+</body>
+</html>

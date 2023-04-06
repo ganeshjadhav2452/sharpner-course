@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>dynamic Web Page</title>
+</head>
+<style>
+ body{
+    background-image: url('pexels-johannes-plenio-1103970.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+ }
+    .img {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .container {
+        background-color: rgb(218, 235, 251);
+        border: 5px solid greenyellow;
+        border-radius: 25px;
+        padding: 20px;
+        margin: auto;
+        margin-top: 50px;
+        width: 60%;
+    }
+
+    .bookCall {
+        text-align: center;
+        font-size: xx-large;
+        font-weight: bold;
+        color: rgb(237, 0, 0);
+        -webkit-text-stroke: 1px orange;
+    }
+
+    .textLine {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .dateTime {
+        display: flex;
+        align-items: center;
+    }
+
+    .InputDate {
+        border-radius: 25px;
+        height: 25px;
+        text-align: center;
+    }
+
+    .InputTime {
+        margin-left: 50px;
+        height: 25px;
+        border-radius: 25px;
+        text-align: center;
+    }
+
+    .btn {
+
+        width: 100%;
+        height: 35px;
+        color: white;
+        font-size: larger;
+        background-color: rgb(245, 128, 128);
+        border-radius: 100px;
+        transition: 1s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .btn:hover {
+        border: 3px solid rgb(237, 0, 0);
+        background-color: rgb(218, 235, 251);
+        color: black;
+    }
+
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<body >
+
+
+    <div class="container mt-5 ">
+        <h1 class="text-center">Book a call</h1>
+        <p class="lead text-center">Book a call slot and our representative will call you within 1hr of selected
+            time</p>
+        <hr>
+        <form action="#" class="form " onsubmit="printData(event)">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" class="form-control rounded-pill">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control rounded-pill" id="email">
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone</label>
+                <input type="number" class="form-control rounded-pill border" id="phoneNumber">
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" class="form-control text-center rounded-pill">
+                </div>
+
+                <div class="col ">
+                    <label for="time" class="form-label ">Date</label>
+                    <input type="time" class="form-control text-center rounded-pill">
+
+                </div>
+                <div class="col-12 pt-5">
+                    <button class="btn btn-primary rounded-pill" type="submit">Button</button>
+                </div>
+            </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous">
+
+            let printData = (event) => {
+                event.preventDefault();
+                let name = document.getElementsByClassName('InputName')[0].value
+                let email = document.getElementsByClassN('InputEmail')[0].value
+                let phone = document.getElementsByClassName('InputPhoneNumber')[0].value
+                let date = document.getElementsByClassNam('InputDate')[0].value
+                let time = document.getElementsByClassName('InputTime')[0].value
+
+                console.log(`The name of the customer is : ${name} , phone Number : ${phone} their email is: {email} and we have to call them on day :${date}on time: ${time}`)
+            }
+        </script>
+</body>
+
+</html>

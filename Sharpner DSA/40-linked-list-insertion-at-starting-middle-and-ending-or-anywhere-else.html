@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        class LinkedList {
+            constructor(headValue) {
+                this.head = {
+                    value: headValue,
+                    next: null
+                }
+                this.tail = this.head;
+                this.length = 1;
+            }
+
+            // push node method
+            pushNode(valueOfNode) {
+                let newNode = {
+                    value: valueOfNode,
+                    next: null
+                }
+                this.tail.next = newNode;
+                this.tail = newNode
+                this.length++
+            }
+
+            //insert At Any Index
+
+            getParentNode(require) {
+                let count = 0;
+                let currentNode = this.head;
+                while (count != require) {
+                    count++;
+                    currentNode = currentNode.next;
+                }
+                return currentNode;
+            }
+
+            insertNodeAtAnyIndex(index, data) {
+                let newNode = {
+                    value: data,
+                    next: null
+                }
+                let parentNode = this.getParentNode(index - 1);
+                let nextNode = parentNode.next;
+                parentNode.next = newNode;
+                newNode.next = nextNode;
+                this.length++;
+            }
+
+            // insertion at the postion of head;
+
+            insertNodeAtPostionOfHead(data) {
+                let newNode = {
+                    value: data,
+                    next: null
+                }
+                newNode.next = this.head;
+                this.head = newNode;
+                this.length++;
+
+            }
+
+            // insert node in the ending means one step before of null
+            NodeJustBeforeTail() {
+
+                let neededNode = this.head;
+
+                while (neededNode.next != this.tail) {
+
+                    neededNode = neededNode.next;
+                }
+                return neededNode;
+            }
+
+            insertNodeJustBeforeOfTail(data) {
+                let newNode = {
+                    value: data,
+                    next: null
+                }
+                let secondLastNodeOfList = this.NodeJustBeforeTail();
+
+                secondLastNodeOfList.next = newNode;
+                newNode.next = this.tail;
+                this.length++;
+            }
+
+            // display the values of linked List
+
+            display(head) {
+                let temp = this.head;
+
+                while (temp != null) {
+
+                    console.log(temp.value)
+                    temp = temp.next;
+                }
+            }
+
+            // inserting node at the middle of linked list
+
+            getMiddleNode(){
+                let count = 0;
+                let  indexNeededNode = Math.floor(this.length/2)-1
+                let neededNode = this.head;
+                while(count != indexNeededNode){
+                    count++;
+                    neededNode = neededNode.next;
+                }
+                return neededNode;
+            }
+
+            insertNodeAtTheMiddle(data){
+                let newNode={
+                    value : data,
+                    next : null
+                }
+                let middleNode = this.getMiddleNode();
+                let childNodeOfMiddleNode = middleNode.next;
+
+                middleNode.next = newNode;
+                newNode.next = childNodeOfMiddleNode;
+                this.length++;
+            }
+
+
+
+        }
+
+        let node = new LinkedList(100);
+        node.pushNode(200)
+        node.pushNode(300)
+        node.pushNode(400)
+        node.pushNode(500)
+        // node.insertNodeAtAnyIndex(5, 2452)
+        node.insertNodeAtPostionOfHead(1111)
+        node.insertNodeJustBeforeOfTail(2222)
+        node.insertNodeJustBeforeOfTail(5555)
+        node.insertNodeAtTheMiddle(7777)
+        node.display(node.head)
+       // console.log(node)
+       */
+
+
+        // ----------------practice linked list using function--------------------
+
+        class node {
+            constructor(data) {
+                this.value = data
+                this.next = null;
+            }
+        }
+
+        let insertionInPlaceOfHead = (head, data) => {
+            let newNode = new node(data);
+
+            newNode.next = head;
+
+            return newNode;
+        }
+
+        head = new node(5);
+
+        head = insertionInPlaceOfHead(head, 10)
+        console.log(head)
+    </script>
+</body>
+
+</html>

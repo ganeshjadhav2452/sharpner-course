@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class LinkedList {
+            constructor(headValue) {
+                this.head = {
+                    value: headValue,
+                    next: null
+                }
+                this.tail = this.head;
+                this.length = 1;
+            }
+
+            // push node method
+            pushNode(valueOfNode) {
+                let newNode = {
+                    value: valueOfNode,
+                    next: null
+                }
+                this.tail.next = newNode;
+                this.tail = newNode
+                this.length++
+            }
+
+
+            // display the values of linked List
+
+            display(head) {
+                let temp = this.head;
+
+                while (temp != null) {
+
+                    console.log(temp.value, 'length is: ', this.length)
+                    temp = temp.next;
+                }
+            }
+
+            // Delete Node from the first means head
+
+            deleteHead() {
+                this.head = this.head.next
+                this.length--
+            }
+
+            // delete at any index
+
+            getParentNode(index) {
+                let count = 0;
+                let tempNode = this.head;
+                while (count !== index) {
+                    count++
+                    tempNode = tempNode.next;
+                }
+                return tempNode;
+            }
+
+            deleteAtAnyIndex(index) {
+                let parentNode = this.getParentNode(index - 1)
+                let nextNode = parentNode.next.next;
+
+                parentNode.next = nextNode;
+                this.length--;
+            }
+
+
+            // delet tail of linked list
+            getParentNodeOfTail() {
+
+                let tempNode = this.head;
+
+                while (tempNode.next.next != null) {
+                    tempNode = tempNode.next;
+                }
+                return tempNode;
+            }
+            deleteTail() {
+                this.parentNode = this.getParentNodeOfTail();
+                this.parentNode.next = null;
+                this.length--;
+            }
+
+
+        }
+
+        let node = new LinkedList(100);
+        node.pushNode(200)
+        node.pushNode(300)
+        node.pushNode(400)
+        node.pushNode(500)
+
+        // below are deletion operations / methods
+        
+        node.deleteHead();
+        node.deleteAtAnyIndex(1)
+        node.deleteTail();
+
+
+        node.display(node.head)
+
+    </script>
+</body>
+
+</html>

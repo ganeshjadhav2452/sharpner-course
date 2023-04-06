@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        class queue {
+            constructor() {
+                this.queueArr = [];
+                this.front = -1;
+                this.rear = -1;
+            }
+
+            enqueu(el) {
+                if (this.front == -1) {
+                    this.front++;
+                    this.rear++
+                }
+                else {
+                    this.rear++
+                }
+                this.queueArr[this.rear] = el;
+            }
+
+            dequeue() {
+                // we can virtualy delet a value by increamenting front value by 1;
+                if (this.front == this.rear) {
+                    this.front = -1;
+                    this.rear = -1;
+                }
+                else {
+                    this.front++;
+                }
+            }
+
+            frontOfqueue() {
+                console.log(this.queueArr[this.front])
+            }
+
+            rearOfQueue() {
+                console.log(this.queueArr[this.rear])
+            }
+            isEmpty() {
+                if (this.front == -1 && this.rear == -1) {
+                    return true
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+
+
+        let firstQueue = new queue();
+        firstQueue.enqueu(1);
+        firstQueue.enqueu(2);
+        firstQueue.enqueu(3);
+        firstQueue.dequeue();
+        firstQueue.dequeue();
+        firstQueue.dequeue();
+        console.log(firstQueue.isEmpty());
+        firstQueue.frontOfqueue();
+        firstQueue.rearOfQueue();
+        console.log(firstQueue.queueArr, 'index of front is ' + firstQueue.front, 'index of rear ' + firstQueue.rear)
+
+
+*/
+        // -------------------------practice 2 --------------------------------
+
+        class Queue {
+            constructor() {
+                this.myQueue = [];
+                this.front = -1;
+                this.rear = -1;
+            }
+
+            Enqueue(el) {
+                if (this.front == -1 && this.rear == -1) {
+                    this.front++;
+                    this.rear++;
+                }
+                else {
+                    this.rear++
+                }
+                this.myQueue[this.rear] = el;
+            }
+
+            Dequeue() {
+                if (this.front == this.rear) {
+                    this.rear = -1;
+                    this.front = -1;
+                } else {
+                    this.front++
+                }
+            }
+
+            is_empty() {
+                if (this.front == -1 && this.rear == -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            get_first_element() {
+                return this.myQueue[this.front]
+            }
+
+        }
+
+        let firstQueue = new Queue();
+
+        firstQueue.Enqueue(1)
+        firstQueue.Enqueue(2)
+        firstQueue.Enqueue(3)
+        // firstQueue.Dequeue();
+        firstQueue.Dequeue();
+        console.log(firstQueue.is_empty())
+        console.log(firstQueue.get_first_element())
+
+
+        console.log(firstQueue.myQueue, 'the front th index of queue is = ' + firstQueue.front, ' and rear th index of queue is = ' + firstQueue.rear)
+    </script>
+</body>
+
+</html>

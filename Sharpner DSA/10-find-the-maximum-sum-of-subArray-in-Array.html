@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find the maximum sum subarray. Return the maximum sum of the subarray.</title>
+</head>
+
+<body>
+    <script>
+
+    /*KADANE'S ALGORITHM
+    Kadane's algorithm is a method for finding the contiguous subarray within a one-dimensional array of numbers (i.e., a list in JavaScript) which has the largest sum. It was first proposed by Jay Kadane in 1984. The algorithm consists of the following steps:
+    
+    1. Initialize two variables, maxEndingHere and maxSoFar, to the first element of the array.
+  
+    2. Starting from the second element of the array, iterate through the rest of the array.
+
+    3. At each element, update maxEndingHere by comparing the current element with the sum of the current element and the previous maxEndingHere. The larger of the two values will be stored in maxEndingHere.
+
+    4. Update maxSoFar by comparing maxEndingHere with the previous maxSoFar. The larger of the two values will be stored in maxSoFar.
+
+    5. Return maxSoFar as the result. 
+    
+    
+    
+    
+   
+      let myArray = [5, 2, -4, -5, 3, -1, 2, 3, 1];
+
+
+            let maxSum = -Infinity;
+            let curSum = 0;
+            for (let i = 0; i < myArray.length; i++) {
+
+                curSum += myArray[i];
+                if (curSum > maxSum) {
+                    maxSum = curSum;
+                }
+                if (curSum < 0) {
+                    curSum = 0;
+                }
+
+            }
+            console.log(maxSum)
+    
+    */
+
+        let myArray = [5, 2, -4, -5, 3, -1, 2, 3, 1];
+
+
+            let maxSum = -Infinity;
+            let curSum = 0;
+            for (let i = 0; i < myArray.length; i++) {
+
+                curSum += myArray[i];
+                if (curSum > maxSum) {
+                    maxSum = curSum;
+                }
+                if (curSum < 0) {
+                    curSum = 0;
+                }
+
+            }
+            console.log(maxSum)
+
+/*
+        let maxSum = myArray[0]
+       
+    console.log(maxSum)
+
+        for (let i = 0; i < myArray.length; i++) {
+
+            for (let j = i; j < myArray.length; j++) {
+
+                let currentSubArray = [];
+
+                for (let k = i; k <= j; k++) {
+                    currentSubArray[k] = myArray[k];
+                }
+
+                let sumOfSubArray = 0;
+
+                for (let c = 0; c <= currentSubArray.length; c++) {
+
+                    sumOfSubArray = sumOfSubArray + currentSubArray[c]
+
+                    if (sumOfSubArray > maxSum) {
+                        maxSum = sumOfSubArray;
+                    }
+
+                }
+
+            }
+
+        }
+        console.log(maxSum)
+
+       */ 
+
+        // --------------------------------my code from website compiler of sharpner----------
+
+        /*    let maxSum = arr[0];
+      
+      for(let i = 0; i<arr.length; i++){
+      
+        for(let j = i ; j<arr.length; j++){
+      
+            let currentSubArray = [];
+      
+            for(let k = i; k<=j; k++){
+                currentSubArray[k] = arr[k];
+            }
+      
+            let sumOfSubArray = 0;
+      
+            for(let c = 0; c<currentSubArray.length;c++){
+                
+                sumOfSubArray = sumOfSubArray + currentSubArray[c]
+      
+                if(sumOfSubArray > maxSum){
+                    maxSum = sumOfSubArray;
+                }
+                
+            }
+            
+        }
+      
+      }
+      return (maxSum)
+      */
+
+
+        //-------------------code from praful---------------------
+/*
+        let maxy = 0;
+        for (let x = 0; x < length; x++) {
+            maxy = maxy + arr[x];
+        }
+
+
+        for (let i = 0; i < length; i++) {
+            for (let j = i; j < length; j++) {
+                let sum = 0;
+                for (let k = i; k <= j; k++) {
+                    sum = sum + arr[k];
+
+                }
+                if (sum > maxy) {
+                    maxy = sum;
+                }
+            }
+
+
+        }
+        return maxy;
+
+        */
+    </script>
+
+</body>
+
+</html>

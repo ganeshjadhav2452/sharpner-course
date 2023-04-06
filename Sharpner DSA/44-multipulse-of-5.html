@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Write a question to print all the multiples of 5 less than 30 in a recursive way.
+
+        output - 0 5 10 15 20 25
+        */
+
+
+        let n = 5;
+        let i = 0;
+
+        let multiplesOfn = (n, i) => {
+
+            if (i < 30) {
+                if (i % n === 0) {
+                    console.log(i);
+                }
+
+                multiplesOfn(n,i + 5)
+            }
+        }
+        multiplesOfn(n, i)
+
+
+     
+
+    </script>
+</body>
+
+</html>

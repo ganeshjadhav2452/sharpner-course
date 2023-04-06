@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Write a recursive program to find all the permutations of a string and store it in a list or arraylist or vectors.
+
+        Example:-
+
+        Permutation for abc
+
+        abc,acb, bac, bca, cab ,cba
+*/
+        let str = 'abc'
+
+        function getPermutations(str) {
+            const results = [];
+
+            if (str.length === 1) {
+                results.push(str);
+                return results;
+            }
+
+            for (let i = 0; i < str.length; i++) {
+                const firstChar = str[i];
+                const charsLeft = str.substring(0, i) + str.substring(i + 1);
+                const innerPermutations = getPermutations(charsLeft);
+
+                for (let j = 0; j < innerPermutations.length; j++) {
+                    results.push(firstChar + innerPermutations[j]);
+                }
+            }
+
+            return results;
+        }
+
+        console.log(getPermutations(str))
+
+
+    </script>
+</body>
+
+</html>

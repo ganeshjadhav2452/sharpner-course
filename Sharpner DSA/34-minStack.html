@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+
+        Implement the MinStack class:
+
+        MinStack() initializes the stack object.
+        void push(int val) pushes the element val onto the stack.
+        void pop() removes the element on the top of the stack.
+        int top() gets the top element of the stack.
+        int getMin() retrieves the minimum element in the stack.
+        You must implement a solution with O(1) time complexity for each function.
+
+ 
+        */
+
+
+
+        class MinStack {
+
+            constructor() {
+
+                this.stack = [];
+                
+                this.minStack = [];
+            }
+
+            push(val) {
+
+                let pushed = this.stack.push(val);
+                if (this.minStack.length == 0 || val < this.minStack[this.minStack.length - 1]) {
+                    this.minStack.push(val)
+                }
+            };
+
+            pop() {
+                let poped = this.stack.pop();
+                if (poped == this.minStack[this.minStack.length - 1]) {
+                    this.minStack.pop();
+                }
+            };
+
+            top() {
+                return this.stack[this.stack.length - 1];
+            };
+
+            getMin() {
+                return this.minStack[this.minStack.length - 1]
+            };
+
+        };
+
+
+
+
+        var obj = new MinStack()
+        obj.push(-2)
+        obj.push(0)
+        obj.push(-3)
+        obj.pop()
+        var param_3 = obj.top()
+        var param_4 = obj.getMin()
+        console.log(param_4)
+
+      
+
+    </script>
+</body>
+
+</html>

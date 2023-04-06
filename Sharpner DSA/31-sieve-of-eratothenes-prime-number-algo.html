@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let n = 100;
+        function sieveOfEratosthenes(limit) {
+            // Create a boolean array "prime[0..limit]" and initialize
+            // all entries it as true.
+            let prime = Array(limit + 1).fill(true);
+
+            // 0 and 1 are not prime numbers, so mark them as false
+            prime[0] = false;
+            prime[1] = false;
+
+            // Mark all the multiples of i as composite numbers
+            for (let i = 2; i * i <= limit; i++) {
+                if (prime[i]) {
+                    for (let j = i * i; j <= limit; j += i) {
+                        prime[j] = false;
+                    }
+                }
+            }
+
+            // Create an array to hold the prime numbers
+            let primes = [];
+
+            // Add all the prime numbers to the array
+            for (let i = 2; i <= limit; i++) {
+                if (prime[i]) {
+                    primes.push(i);
+                }
+            }
+
+            return primes;
+        }
+
+        // Example usage
+        console.log(sieveOfEratosthenes(n)); // [2, 3, 5, 7, 11, 13, 17, 19]
+
+    </script>
+</body>
+
+</html>

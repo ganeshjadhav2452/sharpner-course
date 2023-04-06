@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>insertion sort algorithm</title>
+</head>
+
+<body>
+    <script>
+        /*
+        Write a program to sort the array in ascending order using Insertion sort algorithm. After Sorting return the array.
+
+        Note both the array and size is already given.
+
+        Input:-
+
+        [4,3,2,5,1]
+
+        Output:-
+
+        [1,2,3,4,5]
+        
+        1. The code creates an array called "arr" with the elements [4,3,2,5,1].
+        
+        2. It then assigns the variable "length" to the length of the array (5 in this case).
+        
+        3. A for loop is used to iterate over the array, starting at the second element (index 1)         and ending at the last element.
+        
+        4. On each iteration, a variable "current" is assigned the value of the current element in         the array.
+        
+        5. A second variable "j" is also declared and set to "i-1" (which is the index of the         previous element in the array).
+        
+        6. The while loop then begins. It will continue to execute as long as "j" is greater than or         equal to 0 and the element at index "j" in the array is greater than the "current" variable.
+        
+        7. Inside the while loop, the element at index "j+1" in the array is set to the value of the         element at index "j".
+        
+        8. "j" is then decremented by 1.
+        
+        9. Once the while loop completes, the element at index "j+1" in the array is set to the         value of the "current" variable.
+        
+        10. The for loop continues until all elements in the array have been evaluated.
+        
+        11. Finally, the sorted array is logged to the console.
+
+        */
+
+        let arr = [4, 3, 2, 5, 1];
+        let length = arr.length;
+
+        for (let i = 1; i < length; i++) {
+            let current = arr[i];
+            let j = i - 1;
+            while (j >= 0 && arr[j] > current) {
+                arr[j + 1] = arr[j];
+                j--;
+            }
+            arr[j + 1] = current;
+        }
+        console.log(arr);
+    </script>
+</body>
+
+</html>

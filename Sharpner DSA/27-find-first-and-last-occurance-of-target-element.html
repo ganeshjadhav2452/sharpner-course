@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        You are Given an array Sorted in ascending order. Find the Starting and ending Position of a given Target value.
+
+
+
+        If target is not found in the array, return [-1, -1].
+
+
+
+        You must write an algorithm with O(log n) runtime complexity.
+
+
+
+        Example 1:
+
+        Input: nums = [5,7,7,8,8,10], target = 8
+
+        Output: [3,4]
+
+
+        */
+
+        let nums = [5, 7, 7, 8, 8, 10], target = 8
+
+
+        let firstAndLastOccurenceOfTargetEl = (nums, target) => {
+
+            let start = 0;
+            let end = nums.length - 1;
+            let mid;
+            let first = -1;
+            let last = -1;
+
+
+            while (start <= end) {
+                mid = Math.floor((start + end) / 2);
+
+                if (nums[mid] == target) {
+                    first = mid;
+                    end = mid - 1;
+
+                }
+
+                else if (nums[mid] > target) {
+                    end = mid - 1;
+                }
+                else {
+                    start = mid + 1;
+                }
+
+
+            }
+
+
+            start = 0;
+            end = nums.length - 1;
+
+            while (start <= end) {
+                mid = Math.floor((start + end) / 2)
+
+                if (nums[mid] == target) {
+                    last = mid;
+                    start = mid + 1;
+                }
+                else if (nums[mid] > target) {
+                    end = mid - 1;
+                }
+                else {
+                    start = mid + 1;
+                }
+            }
+            return [first, last]
+        }
+        console.log(firstAndLastOccurenceOfTargetEl(nums, target))
+
+    </script>
+</body>
+
+</html>

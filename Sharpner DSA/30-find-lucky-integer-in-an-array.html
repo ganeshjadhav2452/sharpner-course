@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-find-lucky-integer-in-an-array leetcode 1394</title>
+</head>
+
+<body>
+    <script>
+        let arr = [1, 2, 2, 3, 3, 3];
+        let myFunc = (arr) => {
+            let myMap = new Map();
+
+            for (let i = 0; i < arr.length; i++) {
+                let current = arr[i]
+                if (myMap.has(current)) {
+                    myMap.set(current, myMap.get(current) + 1)
+                } else {
+                    myMap.set(current, 1)
+                }
+            }
+
+             
+            let result = -1;
+            let tempresult = -1;
+            for ([key, value] of myMap) {
+                if (key == value) {
+                    tempresult = key;
+
+                }
+                if (tempresult > result) {
+                    result = tempresult
+                }
+            }
+            return result;
+        }
+
+        console.log(myFunc(arr))
+
+    </script>
+</body>
+
+</html>

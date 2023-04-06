@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let dividend = 9;
+        let divisor = 3;
+
+        var divide = function (dividend, divisor) {
+            let sign = 1;
+            if ((dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0)) {
+                sign = -1;
+            }
+
+            let absoluteDividend = dividend < 0 ? -dividend : dividend;
+            let absoluteDivisor = divisor < 0 ? -divisor : divisor;
+
+            let result = 0;
+            while (absoluteDividend >= absoluteDivisor) {
+                let temp = absoluteDivisor;
+                let multiple = 1;
+                while (absoluteDividend >= (temp << 1)) {
+                    temp = temp << 1;
+                    multiple = multiple << 1;
+                }
+                result += multiple;
+                absoluteDividend -= temp;
+            }
+
+            result = sign === 1 ? result : -result;
+
+            if (result > 2147483647) {
+                return 2147483647;
+            }
+            if (result < -2147483648) {
+                return -2147483648;
+            }
+            return result;
+        };
+
+        let ans = divide(dividend, divisor);
+        console.log(ans)
+    </script>
+</body>
+
+</html>

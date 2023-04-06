@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>number to hexa decimal</title>
+</head>
+
+<body>
+    <script>
+        /*
+        The code converts a given decimal integer to its hexadecimal representation using bitwise operators and taking advantage of the fact that each hexadecimal digit can be represented by 4 bits.
+
+    1. The function "toHex" is declared which takes an integer "num" as an argument.
+
+    2. If the input "num" is 0, the function immediately returns "0", which is the     hexadecimal representation of 0.
+
+    3. Two variables are declared:
+        - "hex" is a string that represents the hexadecimal digits.
+        - "res" is an empty string that will be used to store the hexadecimal representation of "num".
+
+    4. A while loop starts which continues while "num" is not equal to 0 and the length of     "res" is less than 8.
+
+    5. Within the loop:
+    - The last 4 bits of "num" are taken using the bitwise AND operator with 15 (which is 0b1111 in binary).
+    - The result is used to index into the "hex" string to get the corresponding hexadecimal digit.
+    - This digit is then added to the front of "res" using string concatenation.
+    - The bits of "num" are shifted to the right by 4 using the unsigned right shift operator.
+
+    6. The function returns the "res" string, which is the hexadecimal representation of     "num".
+
+        
+
+        let num = 590; // 2 4 E;
+        var toHex = function (num) {
+            if (num === 0) {
+                return "0";
+            }
+            var hex = "0123456789abcdef", res = "";
+            while (num !== 0 && res.length < 8) {
+                res = hex[num & 15] + res;
+        
+                num >>>= 4;
+            }
+            return res;
+        };
+        console.log(toHex(num))
+        */
+
+
+
+
+        /*
+        let hexadecimal = ""; - This line declares a variable hexadecimal and initializes it with an empty string. The hexadecimal variable will store the final result of the converted hexadecimal number.
+
+        let hexValues = "0123456789abcdef"; - This line declares a constant hexValues which         stores the 16 hexadecimal digits as a string.
+
+        while (decimal > 0) { - This line starts a while loop that will run as long as decimal is         greater than 0. The purpose of this loop is to continuously divide the decimal number by         16 and convert it to a hexadecimal number.
+
+        let remainder = decimal % 16; - This line calculates the remainder when decimal is         divided by 16. This remainder will be used as an index to look up the corresponding         hexadecimal digit in hexValues.
+
+        hexadecimal = hexValues[remainder] + hexadecimal; - This line uses the remainder as an         index to look up the hexadecimal digit in hexValues. The result is then concatenated to         the beginning of hexadecimal using the + operator.
+
+        decimal = (decimal - remainder) / 16; - This line updates the value of decimal by         subtracting remainder from it and then dividing the result by 16. This will give us a new         decimal value that will be used in the next iteration of the loop.
+
+        } - This line ends the while loop.
+
+        return hexadecimal; - This line returns the final value of hexadecimal which is the         converted hexadecimal number.
+
+        console.log(decimalToHexadecimal(255)); - This line calls the decimalToHexadecimal         function and passes the decimal number 255 as an argument. The result of the function is         then logged to the console.
+        */
+
+        function decimalToHexadecimal(decimal) {
+            let hexadecimal = "";
+            let hexValues = "0123456789abcdef";
+
+            while (decimal > 0) {
+                let remainder = decimal % 16;
+                hexadecimal = hexValues[remainder] + hexadecimal;
+                decimal = (decimal - remainder) / 16;
+            }
+
+            return hexadecimal;
+        }
+
+        console.log(decimalToHexadecimal(16));
+
+    </script>
+</body>
+
+</html>

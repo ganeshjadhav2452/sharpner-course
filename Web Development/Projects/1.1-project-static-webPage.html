@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Web Page</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+
+
+    }
+
+    .main {
+        height: 100vh;
+        width: 100vw;
+
+
+
+    }
+
+    .img {
+        height: 100vh;
+        width: 100vw;
+    }
+
+    .formSpace {
+        background-color: rgb(218, 235, 251);
+        height: 60vh;
+        width: 60vw;
+        border: 5px solid greenyellow;
+        position: fixed;
+        top: 20%;
+        left: 25%;
+        right: 10%;
+        margin-top: -100px;
+        margin-left: -100px;
+        border-radius: 25px;
+        padding: 20px;
+
+
+    }
+
+    .block {
+        display: block;
+        width: 100%;
+        height: 25px;
+        margin: 10px;
+        margin-left: 0px;
+        border-radius: 25px;
+
+    }
+
+    .bookCall {
+
+        text-align: center;
+        font-size: xx-large;
+        margin: 0;
+        margin-left: 40%;
+        font-weight: bold;
+        color: rgb(237, 0, 0);
+        -webkit-text-stroke: 1px orange;
+
+
+
+
+    }
+
+    .textLine {
+        display: block;
+        text-align: center;
+        font-weight: bold;
+
+    }
+
+    .dateTime {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .InputDate {
+        width: 50%;
+        border-radius: 25px;
+        height: 25px;
+        text-align: center;
+    }
+
+    .InputTime {
+        width: 50%;
+        margin-left: 50px;
+        height: 25px;
+        border-radius: 25px;
+        text-align: center;
+    }
+
+    .btn {
+        width: 100%;
+        height: 35px;
+        margin: 10px;
+        color: white;
+        font-size: larger;
+        background-color: rgb(245, 128, 128);
+
+        border-radius: 100px;
+        transition: 1s;
+    }
+
+    .btn:hover {
+        border: 3px solid rgb(237, 0, 0);
+        background-color: rgb(218, 235, 251);
+        color: black;
+    }
+
+    label {
+        font-weight: bold;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <img src="pexels-johannes-plenio-1103970.jpg" alt="gb" class="img">
+        <div class="formSpace">
+            <span class="bookCall">Book a call</span>
+            <p class="textLine"> Book a call slot and our representative will call you within 1hr of selected time</p>
+            <hr>
+            <form action="#" class="form" onsubmit="printData(event)">
+                <label for="name"> Name:</label>
+                <input type="text" id="name" class="InputName block">
+                <label for="email">Email:</label>
+                <input type="email" class="InputEmail block" id="email">
+                <label for="phoneNumber"> Phone:</label>
+                <input type="number" class="InputPhoneNumber block" id="phoneNumber">
+                <label for="date"> Time for Call</label>
+
+                <div class="dateTime">
+                    <input type="date" class="InputDate" id="Date">
+                    <input id='time' type="time" class="InputTime">
+                </div>
+                <input class='btn' type="submit" value="Get A Call">
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        let printData = (event) => {
+            event.preventDefault();
+            let name = document.getElementsByClassName('InputName')[0].value
+            let email = document.getElementsByClassName('InputEmail')[0].value
+            let phone = document.getElementsByClassName('InputPhoneNumber')[0].value
+            let date = document.getElementsByClassName('InputDate')[0].value
+            let time = document.getElementsByClassName('InputTime')[0].value
+
+            console.log(`The name of the customer is : ${name} , phone Number : ${phone} their email is: ${email} and we have to call them on day :${date} on time: ${time}`)
+        }
+    </script>
+</body>
+
+</html>

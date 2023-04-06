@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bubble sort algorithm on Array</title>
+</head>
+<body>
+    <script>
+        /*
+     Write a program to sort the array in descending order using Bubble sort algorithm.After Sorting return the array.
+
+    Note both the array and size is already given.
+
+    Input: -
+
+    [4, 3, 2, 5, 1]
+
+
+
+    Output: -
+
+    [5, 4, 3, 2, 1]
+    */
+
+
+    let myArray = [4,3,2,5,1];
+
+    for(let i = 0; i<myArray.length;i++){
+
+      for(let j = 0; j<myArray.length;j++){
+            if(myArray[j]<myArray[j+1]){
+              let temp = myArray[j];
+                myArray[j] = myArray[j+1];
+                myArray[j+1] = temp;
+            }
+        }
+    }
+    console.log(myArray)
+
+
+
+
+    </script>
+</body>
+</html>

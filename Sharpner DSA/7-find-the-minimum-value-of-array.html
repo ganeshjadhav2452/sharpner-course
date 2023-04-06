@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find the minimum value of array</title>
+</head>
+<body>
+
+    <script>
+        let myArray = [2521111,6,7,4,25256,4,-7,-4444];
+
+        let minimum = myArray[0];
+
+        for(let i = 1; i<myArray.length; i++){
+
+            if(myArray[i]<minimum){
+
+                minimum = myArray[i]
+            }
+        }
+
+        console.log(minimum)
+    </script>
+</body>
+</html>
