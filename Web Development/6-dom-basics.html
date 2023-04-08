@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-color: rgb(222, 124, 124);
+    }
+
+    nav {
+        border: 3px solid white;
+        color: white;
+        margin-bottom: 5em;
+        padding: 10px;
+
+    }
+    .container{
+        background-color: rgb(227, 230, 140);
+        height: 50vh;
+        padding: 25px;
+        border-radius: 10px;
+    }
+    form{
+        display: flex;
+        font-size: x-large;
+    }
+    form input{
+        border-radius: 16px;
+        margin: 2%;
+        
+    }
+    .element{
+        border: 2px solid red;
+        margin: 2%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <nav>
+        <h1>Ganesh Jadhav DOM Practice</h1>
+    </nav>
+    <div class="container">
+        <form onsubmit="submited(event)">
+            <label for="textIn">Add Items</label>
+           <input type="text" id="textIn">
+           <input type="submit">
+
+        </form>
+        <div class="submitedElements">
+            <div class="element">Item 1</div>
+            <div class="element">Item 2</div>
+            <div class="element">Item 3</div>
+            <div class="element">Item 4</div>
+        </div>
+    </div>
+    <script>
+        
+        let submited = (e)=>{
+            e.preventDefault()
+            let text = document.querySelector('#textIn').value;
+            console.log(text)
+        }
+    </script>
+</body>
+
+</html>
