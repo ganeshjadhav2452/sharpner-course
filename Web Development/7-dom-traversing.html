@@ -33,12 +33,10 @@
         </div>
     </div>
     <script>
-        let items = document.querySelector('#items');
-        let header = document.querySelector('#main-header');
-
+        //task 1
         let el = document.createElement('div')
 
-        el.className = 'ganesh'
+       
         let newText = document.createTextNode('hello world')
         el.appendChild(newText)
 
@@ -51,9 +49,21 @@
         let position = container.firstElementChild;
         container.insertBefore(el, position)
 
+        // task 2
+        let el2 = document.createElement('li')
+        let newText2 = document.createTextNode('Hello world');
+
+        el2.appendChild(newText2)
+        el2.setAttribute('style','color:red;')
+        el2.className = "list-group-item";
+
+        let parent = document.querySelector('#items')
+        let target = parent.firstElementChild;
+
+        parent.insertBefore(el2,target)
+        
 
     </script>
-
 </body>
 
 </html>
