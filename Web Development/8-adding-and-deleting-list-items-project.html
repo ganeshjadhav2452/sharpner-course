@@ -28,6 +28,7 @@
             <h2 class="title">Add Items</h2>
             <form class="form-inline mb-3">
                 <input id='itemVal' type="text" class="form-control mr-2">
+                <input id='descript' type="text" class="form-control mr-2">
                 <input id="submitedValue" type="submit" class="btn btn-dark" value="Submit">
             </form>
             <h2 class="title">Items</h2>
@@ -61,6 +62,7 @@
         submit.addEventListener('click', (e) => {
             e.preventDefault();
             let item = document.querySelector('#itemVal').value;
+            let descript = document.getElementById('descript').value;
             //making li element 
             let li = document.createElement('li');
 
@@ -69,11 +71,13 @@
 
             //making a text node with value of input
 
-            let inputText = document.createTextNode(item);
+            let inputText = document.createTextNode(item + ' ');
+            let description = document.createTextNode(descript);
 
             //appending inputText in the li
 
             li.appendChild(inputText);
+            li.appendChild(description)
 
             // edit button 
 
@@ -123,11 +127,17 @@
 
             let itemList = document.getElementsByClassName('list-group-item');
 
-            let arrayOfItem = Array.from(itemList).forEach((item) => {
+            Array.from(itemList).forEach((item) => {
+
                 var itemName = item.firstChild.textContent;
-                if (itemName.toLowerCase().indexOf(text) != -1) {
+                var descriptionArea = item.firstChild.nextSibling.textContent;
+
+                if (itemName.toLowerCase().indexOf(text) != -1 || descriptionArea.toLocaleLowerCase().indexOf(text) != -1) {
+
                     item.style.display = 'block';
+
                 } else {
+
                     item.style.display = 'none';
                 }
             })
