@@ -66,7 +66,12 @@
 
              // storing data in the local storage on the click of submit button
 
-             localStorage.setItem(item,descript);
+             let obj = {
+                item : item,
+                descript : descript
+             }
+
+             localStorage.setItem('ItemDetails',JSON.stringify(obj));
             //making li element 
             let li = document.createElement('li');
 
