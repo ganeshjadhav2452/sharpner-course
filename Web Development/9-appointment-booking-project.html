@@ -18,25 +18,25 @@
 <body>
     <form>
         <label for="input1">Enter Name</label>
-        <input id="input1" type="text">
+        <input class="input1" id="input1" type="text">
 
         <label for="input2">Enter Mail</label>
-        <input id="input2" type="email">
+        <input class="input2" id="input2" type="email">
 
         <label for="input3">Enter PhoneNumber</label>
-        <input id="input3" type="number">
+        <input class="input3" id="input3" type="number">
 
         <input type="submit" id="submit">
 
     </form>
     <div class="appointments">
-       <!-- <li class="appointment"> <button class="delete">Delete</button></li> -->
+        <!-- <li class="appointment"> <button class="delete">Delete</button></li> -->
 
     </div>
 
     <script>
 
-    
+
 
         let submit = document.querySelector('#submit');
 
@@ -74,6 +74,15 @@
             deleteBtn.appendChild(textDelete);
             console.log(deleteBtn)
 
+            // creating edite button
+            let editBtn = document.createElement('button')
+            editBtn.classList = 'edit';
+            editBtn.style.margin = '5px'
+            let textEdit = document.createTextNode('Edit');
+            editBtn.appendChild(textEdit);
+
+
+
             let aptData = localStorage.getItem(email);
 
             let parsedData = JSON.parse(aptData);
@@ -83,7 +92,8 @@
             let aptText = document.createTextNode(liData);
 
             li.appendChild(aptText);
-            li.appendChild(deleteBtn)
+            li.appendChild(deleteBtn);
+            li.appendChild(editBtn)
 
             let appointments = document.querySelector('.appointments');
 
@@ -102,6 +112,24 @@
                 }
             })
 
+            // adding edite functionality
+            
+
+            editBtn.addEventListener('click', (e) => {
+                if (e.target.classList.contains('edit')) {
+                   
+                  
+                    
+
+                    localStorage.removeItem(email)
+
+                    document.querySelector('.input1').value = parsedData.name;
+                    document.querySelector('.input2').value = parsedData.email;
+                    document.querySelector('.input3').value = parsedData.phoneNumber;
+
+                }
+            })
+            
         })
 
 
