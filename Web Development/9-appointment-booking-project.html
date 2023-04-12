@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>appointment booking project</title>
     <style>
-        .appointment{
-           
+        .appointment {
+
             display: block;
         }
     </style>
@@ -30,11 +30,13 @@
 
     </form>
     <div class="appointments">
-        
+       <!-- <li class="appointment"> <button class="delete">Delete</button></li> -->
+
     </div>
 
     <script>
 
+    
 
         let submit = document.querySelector('#submit');
 
@@ -61,7 +63,16 @@
             // working on created elements
 
             let li = document.createElement('li');
+
             li.classList = 'appointment';
+
+            // delete button and basic requirement for delete operation
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.classList = 'delete'
+            let textDelete = document.createTextNode('Delete');
+            deleteBtn.appendChild(textDelete);
+            console.log(deleteBtn)
 
             let aptData = localStorage.getItem(email);
 
@@ -72,16 +83,35 @@
             let aptText = document.createTextNode(liData);
 
             li.appendChild(aptText);
+            li.appendChild(deleteBtn)
 
             let appointments = document.querySelector('.appointments');
 
             appointments.appendChild(li)
 
 
+            // delete button functionality
 
+            deleteBtn.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete')) {
+                    let li = e.target.parentElement;
+                    appointments.removeChild(li)
 
+                    localStorage.removeItem(email)
+
+                }
+            })
 
         })
+
+
+
+
+
+
+
+
+
     </script>
 </body>
 
