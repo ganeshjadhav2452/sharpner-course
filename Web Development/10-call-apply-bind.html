@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function genPass(name, lastName) {
+            return `${this.name}#${this.lastName}123`
+        }
+
+
+        let student = {
+            name: 'ganesh',
+            lastName: 'jadhav',
+            age: 20,
+            generatePassword: genPass(this.name, this.lastName)
+
+        }
+
+        let teacher = {
+            name: 'vaibhav',
+            lastName: 'mishra',
+            age: 35,
+
+        }
+
+        console.log(genPass.call(student))
+    </script>
+</body>
+
+</html>
