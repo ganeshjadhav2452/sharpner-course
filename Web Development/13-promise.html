@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+
+        // basic of promise
+
+        // how to create a promise : let myPromise = new Promise(resolve,reject);
+
+        let myPromise = function () {
+
+            return new Promise((resolve, reject) => {
+                let flag = true;
+
+                if (flag) {
+                    resolve('hey im ganesh')
+                } else {
+                    reject('im not ganesh')
+                }
+            })
+
+        }
+
+        // how to consume a Promise
+        /*
+        myPromise().then((data) => {
+            console.log(data)
+        })
+        .catch((error) => {
+            console.log(new Error(error))
+        })
+        */
+
+        // promise chaining
+
+        myPromise().then((data) => {
+            console.log(data)
+            data = data + 'jadhav'
+
+            return data; // it will return a promise not a string or other value;
+        })
+            .catch((error) => {
+                console.log(new Error(error))
+            })
+            .then((data) => {
+                console.log(data)
+                data = data + ' and im from Chatrapati sambhaji nagar'
+                return data;
+            })
+            .then((data) => {
+                console.log(data)
+            })
+
+
+
+
+
+        // for practice and better understaing
+        /*
+        let gitUrl = 'https://api.github.com/users/ganeshjadhav2452';
+
+
+        let user = fetch(gitUrl)
+        console.log(user)
+
+        user.then(function (data) {
+            console.log(data)
+        })
+        */
+    </script>
+</body>
+
+</html>

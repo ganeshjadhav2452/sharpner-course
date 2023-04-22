@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // in this chapter we'll see how we can use call back function
+        /*
+        example 1.
+
+        let posts = [
+            { name: 'ganesh jadhav', age: 20 },
+            { name: 'saurabh yadav', age: 28 },
+            { name: 'nilesh ram', age: 22 },
+        ];
+
+        function getPost() {
+            setTimeout(() => {
+                let output = ''
+                posts.forEach((post) => {
+                    output = output + `<li>${post.name}</li>`
+                });
+                document.body.innerHTML = output;
+            }, 1000);
+
+        }
+
+
+        function createPost(post,callback){
+            setTimeout(() => {
+                posts.push(post)
+                callback()
+            }, 2000);
+           
+        }
+
+        createPost({name:'rameshwar avhale',age:22},getPost)
+        
+
+        */
+
+        //example 2.-----------------------------------------------------------------
+
+        // in this example we are passing  goodMorning function to refreshScreen as a callBack function and then in the refreshScreen we are calling it
+
+        function goodMorning (name){
+            console.log('good Morning ', name)
+
+        }
+
+
+        function refreshScreen(callBack){
+            document.onload = callBack('ganesh')
+        }
+
+        refreshScreen(goodMorning)
+
+
+
+
+    </script>
+</body>
+
+</html>
