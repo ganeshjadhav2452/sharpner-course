@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+        The boy has deleted everything which he had on facebook.
+
+       Now he logs into linkedin to write some inspiring blogs
+
+
+
+       This is the sequence in which it should be executed. Check the last 5 lines
+
+       After breakup the boy logs ino linkedin.
+       He calls create1stblog to create his 1st blog
+       He calls create2ndblog to create his 2nd blog
+       Now he goes mad and he deletes all the blog, till nothing remains.
+
+
+       We want to print all the post which we have deleted in the following sequence.
+
+
+
+       OUTPUT
+
+       BLOG2
+
+       BLOG1
+
+       ERROR: ARRAY IS EMPTY
+
+
+
+       You are only allowed to touch the last 5 lines.
+
+       Do not touch any other function!!!
+        */
+        const blogs = [];
+
+        //Do not touch these functions below at all
+        function create1stBlog() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    blogs.push({ title: 'BLOG1' });
+                    resolve();
+                }, 3000)
+            })
+        }
+
+        //Do not touch these functions below at all
+        function create2ndBlog() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    blogs.push({ title: 'BLOG2' });
+                    resolve()
+                }, 2000)
+            })
+        }
+
+
+        function deleteBlog() {
+            //complete this function such that it removes the last element from the blog Array and resolves the deleted blog in 1 second timeout
+            //If no blog present , it breaks the promise with ERROR (reject) in 1 second timeout
+
+            return new Promise((resolve, reject) => {
+                if (blogs.length > 0) {
+                    let deleted = blogs.pop()
+                    console.log(deleted.title);
+                    resolve(deleted)
+                } else {
+                    reject('ERROR')
+                }
+            })
+        }
+
+        //Call the function in the right way so that we can get the desired output
+        create1stBlog()
+            .then(create2ndBlog)
+            .then(() => {
+                return deleteBlog();
+
+            })
+            .then(() => {
+                return deleteBlog();
+
+            })
+            .then(() => {
+                return deleteBlog();
+
+            })
+            .catch((error) => {
+                console.log(error); // should print "ERROR: ARRAY IS EMPTY"
+            });
+    </script>
+</body>
+
+</html>

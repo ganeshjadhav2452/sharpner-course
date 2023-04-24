@@ -10,56 +10,71 @@
 
 <body>
     <script>
-        const posts = [{ title: 'POST1' }, { title: 'POST2' }];
 
-        //Do not touch this function below
-        function printPost() {
-            posts.forEach((post) => {
-                console.log(post.title)
-            })
-        }
-
-        //Do not touch this function below
-        function create3rdPost() {
+        function updateLastUserActivityTime(user) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    posts.push({ title: 'POST3' });
-                    resolve()
-                }, 3000)
-            })
+                    user.lastActivityTime = new Date();
+                    resolve(user.lastActivityTime);
+                }, 1000);
+            });
         }
-        //Do not touch this function below
-        function create4thPost() {
+
+        // Create an array to hold the user's posts
+        let posts = [];
+
+        // Create a function to create a post
+        function createPost(post) {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    posts.push({ title: 'POST4' });
-                    resolve();
-                }, 2000)
-            })
+                    posts.push(post);
+                    resolve(posts);
+                }, 0);
+            });
         }
 
-        //Complete this function such that it returns a Promise
-        //and removes the last element of the posts array with a 1 second delay(setTimeout)
-        //to remove you can use array.pop method
-        function deletePost() {
-            //complete this function
+        // Create a function to delete the last post
+        function deleteLastPost() {
             return new Promise((resolve, reject) => {
                 setTimeout(() => {
-                    posts.pop()
-                    resolve()
-                }, 1000)
-            })
+                    posts.pop();
+                    resolve(posts);
+                }, 0);
+            });
         }
 
-        //make the following sequence work properly
-        create3rdPost()
-        .then(deletePost)
-       .then(create4thPost)
-       .then(printPost)
-       
-    
-        console.log(posts)
+        // Create a user object with a lastActivityTime property
+        let user = {
+            name: 'John',
+            lastActivityTime: null,
+        };
 
+        // Call the createPost function to create a new post and update the user's lastActivityTime
+        createPost('First post')
+            .then((posts) => {
+                console.log('All posts:', posts);
+
+                // Call the updateLastUserActivityTime function to update the user's lastActivityTime
+                return updateLastUserActivityTime(user);
+            })
+            .then((lastActivityTime) => {
+                console.log('Last activity time:', lastActivityTime);
+
+                // Call the createPost function to create another post and update the user's lastActivityTime
+                return createPost('Second post');
+            })
+            .then((posts) => {
+                console.log('All posts:', posts);
+
+                // Call the deleteLastPost function to delete the last post and update the user's lastActivityTime
+                return deleteLastPost();
+            })
+            .then((posts) => {
+                console.log('New set of posts:', posts);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
 
 
 
