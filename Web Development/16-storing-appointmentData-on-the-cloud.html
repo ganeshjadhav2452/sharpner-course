@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>appointment booking project</title>
+    <style>
+        .appointment {
+
+            display: block;
+        }
+    </style>
+</head>
+
+
+<body>
+    <form>
+        <label for="input1">Enter Name</label>
+        <input class="input1" id="input1" type="text">
+
+        <label for="input2">Enter Mail</label>
+        <input class="input2" id="input2" type="email">
+
+        <label for="input3">Enter PhoneNumber</label>
+        <input class="input3" id="input3" type="number">
+
+        <input type="submit" id="submit">
+
+    </form>
+    <div class="appointments">
+        <!-- <li class="appointment"> <button class="delete">Delete</button></li> -->
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.6/axios.min.js"></script>
+    <script>
+
+
+
+        let submit = document.querySelector('#submit');
+
+        /*
+        window.addEventListener("DOMContentLoaded", () => {
+            axios
+                .get("https://crudcrud.com/api/822ae0e3d40c4b96b9e2ca43040eb9e1/appointments")
+                .then((response) => {
+                    for (var i = 0; i < response.data.length; i++) {
+                        showAppointment(response.data[i]);
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+    */
+        submit.addEventListener('click', (e) => {
+            e.preventDefault();
+            // getting values from input
+
+            let name = document.querySelector('#input1').value;
+            let email = document.querySelector('#input2').value;
+            let phoneNumber = document.querySelector('#input3').value;
+
+            //creating object from the all values
+
+            let obj = {
+                name,
+                email,
+                phoneNumber
+            }
+
+            // working on cloud crudcrud.com
+
+            axios.post('https://crudcrud.com/api/822ae0e3d40c4b96b9e2ca43040eb9e1/appointments', obj)
+                .then((res) => {
+                    console.log(res)
+                    showAppointment(res.data)
+                }).catch((err) => {
+                    console.log(err)
+                })
+
+
+            function showAppointment(data) {
+                // working on created elements
+
+                let li = document.createElement('li');
+
+                li.classList = 'appointment';
+
+
+
+                let liData = (`${data.name} - ${data.email} - ${data.phoneNumber}`);
+
+                let aptText = document.createTextNode(liData);
+
+                li.appendChild(aptText);
+                li.appendChild(deleteBtn);
+                li.appendChild(editBtn)
+
+                let appointments = document.querySelector('.appointments');
+
+                appointments.appendChild(li)
+
+            }
+            window.addEventListener('onload', (e) => {
+
+            })
+
+
+
+            // delete button and basic requirement for delete operation
+
+            let deleteBtn = document.createElement('button')
+            deleteBtn.classList = 'delete'
+            let textDelete = document.createTextNode('Delete');
+            deleteBtn.appendChild(textDelete);
+            console.log(deleteBtn)
+
+            // creating edite button
+            let editBtn = document.createElement('button')
+            editBtn.classList = 'edit';
+            editBtn.style.margin = '5px'
+            let textEdit = document.createTextNode('Edit');
+            editBtn.appendChild(textEdit);
+
+
+
+
+
+            // delete button functionality
+
+            deleteBtn.addEventListener('click', (e) => {
+                if (e.target.classList.contains('delete')) {
+                    let li = e.target.parentElement;
+                    appointments.removeChild(li)
+
+                    localStorage.removeItem(email)
+
+                }
+            })
+
+            // adding edite functionality
+
+
+            editBtn.addEventListener('click', (e) => {
+                if (e.target.classList.contains('edit')) {
+
+
+
+
+                    localStorage.removeItem(email)
+
+                    document.querySelector('.input1').value = parsedData.name;
+                    document.querySelector('.input2').value = parsedData.email;
+                    document.querySelector('.input3').value = parsedData.phoneNumber;
+
+                }
+            })
+
+        })
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
