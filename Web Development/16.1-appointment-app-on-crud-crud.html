@@ -40,20 +40,9 @@
 
         let submit = document.querySelector('#submit');
 
-        /*
-        window.addEventListener("DOMContentLoaded", () => {
-            axios
-                .get("https://crudcrud.com/api/822ae0e3d40c4b96b9e2ca43040eb9e1/appointments")
-                .then((response) => {
-                    for (var i = 0; i < response.data.length; i++) {
-                        showAppointment(response.data[i]);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        });
-    */
+
+
+
         submit.addEventListener('click', (e) => {
             e.preventDefault();
             // getting values from input
@@ -72,7 +61,7 @@
 
             // working on cloud crudcrud.com
 
-            axios.post('https://crudcrud.com/api/822ae0e3d40c4b96b9e2ca43040eb9e1/appointments', obj)
+            axios.post('https://crudcrud.com/api/fb124b58c3d34e05bc08822df7fba1dd/appointments', obj)
                 .then((res) => {
                     console.log(res)
                     showAppointment(res.data)
@@ -80,70 +69,88 @@
                     console.log(err)
                 })
 
-
-            function showAppointment(data) {
-                // working on created elements
-
-                let li = document.createElement('li');
-
-                li.classList = 'appointment';
+        })
 
 
 
-                let liData = (`${data.name} - ${data.email} - ${data.phoneNumber}`);
+        let showAppointment=(data)=> {
+            // working on created elements
+            console.log(data)
+            let li = document.createElement('li');
 
-                let aptText = document.createTextNode(liData);
-
-                li.appendChild(aptText);
-                li.appendChild(deleteBtn);
-                li.appendChild(editBtn)
-
-                let appointments = document.querySelector('.appointments');
-
-                appointments.appendChild(li)
-
-            }
-            window.addEventListener('onload', (e) => {
-
-            })
+            li.classList = 'appointment';
 
 
 
+            let liData = (`${data.name} - ${data.email} - ${data.phoneNumber}`);
+
+            let aptText = document.createTextNode(liData);
+
+            li.appendChild(aptText);
+           // li.appendChild(deleteBtn);
+           // li.appendChild(editBtn)
+
+            let appointments = document.querySelector('.appointments');
+
+            appointments.appendChild(li)
+
+        }
+
+
+        window.addEventListener("DOMContentLoaded", () => {
+            axios
+                .get("https://crudcrud.com/api/fb124b58c3d34e05bc08822df7fba1dd/appointments")
+                .then((response) => {
+                    for (var i = 0; i < response.data.length; i++) {
+                        showAppointment(response.data[i]);
+                        
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        });
+
+ /*
+        // working on delete btn 
+
+      let appointments = document.querySelector('.appointments');
+
+        let deleteBtn = document.createElement('button')
+        deleteBtn.addEventListener('click', (e) => {
             // delete button and basic requirement for delete operation
-
-            let deleteBtn = document.createElement('button')
             deleteBtn.classList = 'delete'
             let textDelete = document.createTextNode('Delete');
             deleteBtn.appendChild(textDelete);
             console.log(deleteBtn)
 
-            // creating edite button
-            let editBtn = document.createElement('button')
+            if (e.target.classList.contains('delete')) {
+                let li = e.target.parentElement;
+                appointments.removeChild(li)
+
+                localStorage.removeItem(email)
+
+            }
+
+        })
+
+
+       
+        // creating edite button
+        let editBtn = document.createElement('button')
+
+
+        editBtn.addEventListener('click', (e) => {
             editBtn.classList = 'edit';
             editBtn.style.margin = '5px'
             let textEdit = document.createTextNode('Edit');
             editBtn.appendChild(textEdit);
 
 
-
-
-
-            // delete button functionality
-
-            deleteBtn.addEventListener('click', (e) => {
-                if (e.target.classList.contains('delete')) {
-                    let li = e.target.parentElement;
-                    appointments.removeChild(li)
-
-                    localStorage.removeItem(email)
-
-                }
-            })
-
             // adding edite functionality
 
 
-            editBtn.addEventListener('click', (e) => {
+           
                 if (e.target.classList.contains('edit')) {
 
 
@@ -156,18 +163,13 @@
                     document.querySelector('.input3').value = parsedData.phoneNumber;
 
                 }
-            })
+            
+
 
         })
 
 
-
-
-
-
-
-
-
+*/
     </script>
 </body>
 
