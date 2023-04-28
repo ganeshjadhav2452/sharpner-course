@@ -19,9 +19,12 @@
             width: 100%;
             background-repeat: no-repeat;
             background-size: cover;
-           
+
         }
-        
+
+        .innerDiv {
+            height: 2rem !important;
+        }
     </style>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -88,7 +91,7 @@
 
             // working on cloud crudcrud.com
 
-            axios.post('https://crudcrud.com/api/6b0ada6148fb483e8e4d8e4408f03464/appointments', obj)
+            axios.post('https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments', obj)
                 .then((res) => {
                     console.log(res)
                     showAppointment(res.data)
@@ -105,8 +108,9 @@
             // working on created elements
 
             let li = document.createElement('li');
-
-            li.classList = 'appointment list-group-item list-group-item-action list-group-item-warning font-weight-bold  rounded border mt-2 d-flex justify-content-between p-2 ';
+           
+          
+            li.classList = 'appointment list-group-item list-group-item-action list-group-item-warning font-weight-bold  rounded border mt-2  p-2 ';
 
 
 
@@ -117,7 +121,7 @@
 
             li.appendChild(aptText);
 
-            // li.appendChild(editBtn)
+
 
             let appointments = document.querySelector('.appointments');
 
@@ -140,10 +144,12 @@
                 if (e.target.classList.contains('delete')) {
 
                     // localStorage.removeItem(email)
-                    axios.delete(`https://crudcrud.com/api/6b0ada6148fb483e8e4d8e4408f03464/appointments/${data._id}`)
+                    axios.delete(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments/${data._id}`)
                         .then((res) => {
                             let li = e.target.parentElement;
-                            appointments.removeChild(li)
+                            if (appointments.contains(li)) {
+                                appointments.removeChild(li);
+                            }
 
                         }).catch((err) => {
                             console.log(err)
@@ -151,15 +157,83 @@
                 }
 
             })
-
+           
             li.appendChild(deleteBtn);
+
+
+
+
+            // creating edite button
+            let editBtn = document.createElement('button')
+
+            editBtn.classList = 'edit btn btn-outline-danger ';
+            editBtn.style.margin = '5px'
+            let textEdit = document.createTextNode('Edit');
+            editBtn.appendChild(textEdit);
+
+
+
+            editBtn.addEventListener('click', (e) => {
+
+
+                // adding edite functionality
+
+
+
+                if (e.target.classList.contains('edit')) {
+
+
+
+                    let name = document.querySelector('.input1').value = data.name;
+                    let email = document.querySelector('.input2').value = data.email;
+                    let phoneNumber = document.querySelector('.input3').value = data.phoneNumber;
+
+                    let li = e.target.parentElement;
+                            if (appointments.contains(li)) {
+                                appointments.removeChild(li);
+                            }
+
+                            
+                    let updatedObj = {
+                        name,
+                        email,
+                        phoneNumber,
+                       
+
+                    }
+
+                    axios.put(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments/${data._id}`, updatedObj)
+                        .then((res) => {
+                            li.textContent = `${res.data.name}  ${res.data.email}  ${res.data.phoneNumber}`
+
+
+                        })
+                        .catch((err) => {
+                            console.log(err)
+                        })
+
+
+
+                }
+
+
+
+            })
+
+            li.appendChild(editBtn)
+
+
 
         }
 
 
+
+
+        // on screen loading our data should get on the screen again
+
         window.addEventListener("DOMContentLoaded", () => {
             axios
-                .get(`https://crudcrud.com/api/6b0ada6148fb483e8e4d8e4408f03464/appointments`)
+                .get(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments`)
                 .then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         showAppointment(response.data[i]);
@@ -175,41 +249,9 @@
 
 
 
-        /*
-               // creating edite button
-               let editBtn = document.createElement('button')
-       
-       
-               editBtn.addEventListener('click', (e) => {
-                   editBtn.classList = 'edit';
-                   editBtn.style.margin = '5px'
-                   let textEdit = document.createTextNode('Edit');
-                   editBtn.appendChild(textEdit);
-       
-       
-                   // adding edite functionality
-       
-       
-                  
-                       if (e.target.classList.contains('edit')) {
-       
-       
-       
-       
-                           localStorage.removeItem(email)
-       
-                           document.querySelector('.input1').value = parsedData.name;
-                           document.querySelector('.input2').value = parsedData.email;
-                           document.querySelector('.input3').value = parsedData.phoneNumber;
-       
-                       }
-                   
-       
-       
-               })
-       
-       
-       */
+
+
+
     </script>
 </body>
 
