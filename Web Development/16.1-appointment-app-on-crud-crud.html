@@ -73,7 +73,7 @@
 
 
 
-        submit.addEventListener('click', (e) => {
+        submit.addEventListener('click', async (e) => {
             e.preventDefault();
             // getting values from input
 
@@ -90,26 +90,27 @@
             }
 
             // working on cloud crudcrud.com
+            console.log(obj)
 
-            axios.post('https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments', obj)
-                .then((res) => {
-                    console.log(res)
-                    showAppointment(res.data)
-                }).catch((err) => {
-                    console.log(err)
-                })
+            try {
+                let response = await axios.post('https://crudcrud.com/api/fc0f90b54a7040b9bc433fe3d86c7e23/appointments', obj)
+
+                showAppointment(response.data)
+            } catch (err) {
+                conosole.log(err)
+            }
 
         })
 
 
 
         let showAppointment = (data) => {
-            console.log(data)
+
             // working on created elements
 
             let li = document.createElement('li');
-           
-          
+
+
             li.classList = 'appointment list-group-item list-group-item-action list-group-item-warning font-weight-bold  rounded border mt-2  p-2 ';
 
 
@@ -135,29 +136,32 @@
             deleteBtn.classList = 'delete btn btn-outline-danger  '
             let textDelete = document.createTextNode('Delete');
             deleteBtn.appendChild(textDelete);
-            console.log(deleteBtn)
 
-            deleteBtn.addEventListener('click', (e) => {
+
+            deleteBtn.addEventListener('click', async (e) => {
                 // delete button and basic requirement for delete operation
 
 
                 if (e.target.classList.contains('delete')) {
 
                     // localStorage.removeItem(email)
-                    axios.delete(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments/${data._id}`)
-                        .then((res) => {
-                            let li = e.target.parentElement;
-                            if (appointments.contains(li)) {
-                                appointments.removeChild(li);
-                            }
+                    try {
+                        let response = await axios.delete(`https://crudcrud.com/api/fc0f90b54a7040b9bc433fe3d86c7e23/appointments/${data._id}`)
 
-                        }).catch((err) => {
-                            console.log(err)
-                        })
+                        let li = e.target.parentElement;
+                        if (appointments.contains(li)) {
+                            appointments.removeChild(li);
+                        }
+                    } catch (err) {
+                        console.log(err)
+                    }
+
+
+
                 }
 
             })
-           
+
             li.appendChild(deleteBtn);
 
 
@@ -173,7 +177,7 @@
 
 
 
-            editBtn.addEventListener('click', (e) => {
+            editBtn.addEventListener('click', async (e) => {
 
 
                 // adding edite functionality
@@ -188,52 +192,56 @@
                     let email = document.querySelector('.input2').value = data.email;
                     let phoneNumber = document.querySelector('.input3').value = data.phoneNumber;
 
-                    let li = e.target.parentElement;
-                            if (appointments.contains(li)) {
-                                appointments.removeChild(li);
-                            }
+                   
 
-                            
+                    try {
+                        //removing from the backend
+                        let delResponse = await axios.delete(`https://crudcrud.com/api/fc0f90b54a7040b9bc433fe3d86c7e23/appointments/${data._id}`)
+
+                        // removing from the frontend
+                        
+                        let li = e.target.parentElement;
+                    if (appointments.contains(li)) {
+                        appointments.removeChild(li);
+                    }
+
+                    }catch(err){
+                        console.log(err)
+                    }
+                    
+
                     let updatedObj = {
                         name,
                         email,
                         phoneNumber,
-                       
+
 
                     }
 
-                    axios.put(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments/${data._id}`, updatedObj)
-                        .then((res) => {
-                            li.textContent = `${res.data.name}  ${res.data.email}  ${res.data.phoneNumber}`
+                    try {
+                        let response = await axios.put(`https://crudcrud.com/api/fc0f90b54a7040b9bc433fe3d86c7e23/appointments/${data._id}`, updatedObj)
 
-
-                        })
-                        .catch((err) => {
-                            console.log(err)
-                        })
-
-
+                        li.textContent = `${response.data.name}  ${response.data.email}  ${response.data.phoneNumber}`
+                    } catch (err) {
+                        console.log(err)
+                    }
 
                 }
-
-
 
             })
 
             li.appendChild(editBtn)
-
-
 
         }
 
 
 
 
-        // on screen loading our data should get on the screen again
+        // on screen loading our data should get on the screen again---------------------
 
         window.addEventListener("DOMContentLoaded", () => {
             axios
-                .get(`https://crudcrud.com/api/cf0557dd247e4a6c9081d76fb277b633/appointments`)
+                .get(`https://crudcrud.com/api/fc0f90b54a7040b9bc433fe3d86c7e23/appointments`)
                 .then((response) => {
                     for (var i = 0; i < response.data.length; i++) {
                         showAppointment(response.data[i]);
